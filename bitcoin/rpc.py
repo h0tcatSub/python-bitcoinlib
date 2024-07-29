@@ -394,7 +394,7 @@ class Proxy(BaseProxy):
          'changepos': Position of added change output, or -1,
         }
         """
-        hextx = hexlify_str(tx.serialize())
+        hextx = tx
         r = self._call('fundrawtransaction', hextx, include_watching)
 
         r['tx'] = CTransaction.deserialize(unhexlify_str(r['hex']))
