@@ -703,7 +703,7 @@ class Proxy(BaseProxy):
 
         allowhighfees - Allow even if fees are unreasonably high.
         """
-        hextx = hexlify_str(tx.serialize())
+        hextx = tx
         r = None
         if allowhighfees:
             r = self._call('sendrawtransaction', hextx, True)
@@ -757,7 +757,7 @@ class Proxy(BaseProxy):
         params is optional and is currently ignored by bitcoind. See
         https://en.bitcoin.it/wiki/BIP_0022 for full specification.
         """
-        hexblock = hexlify_str(block.serialize())
+        hexblock = block#hexlify_str(block.serialize())
         if params is not None:
             return self._call('submitblock', hexblock, params)
         else:
